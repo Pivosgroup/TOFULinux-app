@@ -100,8 +100,12 @@ public:
 
 class DllLibAmCodec : public DllDynamic, DllLibamCodecInterface
 {
+#if defined(TARGET_ANDROID)
   // libamcodec is static linked into libamplayer.so or libamcodec.so
   DECLARE_DLL_WRAPPER(DllLibAmCodec, "libamplayer.so")
+#else
+  DECLARE_DLL_WRAPPER(DllLibAmCodec, "libamcodec.so")
+#endif
 
   DEFINE_METHOD1(int, codec_init,               (codec_para_t *p1))
   DEFINE_METHOD1(int, codec_close,              (codec_para_t *p1))
@@ -418,7 +422,9 @@ static vformat_t codecid_to_vformat(enum AVCodecID id)
     case AV_CODEC_ID_H263I:
     case AV_CODEC_ID_MSMPEG4V2:
     case AV_CODEC_ID_MSMPEG4V3:
+#if defined(TARGET_ANDROID)
     case AV_CODEC_ID_FLV1:
+#endif
       format = VFORMAT_MPEG4;
       break;
     case AV_CODEC_ID_RV10:
