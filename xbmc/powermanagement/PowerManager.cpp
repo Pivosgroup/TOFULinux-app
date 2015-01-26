@@ -47,6 +47,7 @@
 #include "linux/ConsoleDeviceKitPowerSyscall.h"
 #include "linux/LogindUPowerSyscall.h"
 #include "linux/UPowerSyscall.h"
+#include "linux/AMLPowerSyscall.h"
 #endif // HAS_DBUS
 #elif defined(TARGET_WINDOWS)
 #include "powermanagement/windows/Win32PowerSyscall.h"
@@ -83,6 +84,8 @@ void CPowerManager::Initialize()
     m_instance = new CLogindUPowerSyscall();
   else if (CUPowerSyscall::HasUPower())
     m_instance = new CUPowerSyscall();
+  else if (CAMLPowerSyscall::HasAMLPowerSyscall())
+    m_instance = new CAMLPowerSyscall();
   else
 #endif // HAS_DBUS
     m_instance = new CFallbackPowerSyscall();
