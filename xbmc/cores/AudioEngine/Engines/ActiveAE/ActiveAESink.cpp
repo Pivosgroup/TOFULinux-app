@@ -29,6 +29,10 @@
 #include "settings/Settings.h"
 #include "utils/log.h"
 
+#if defined(HAS_LIBAMCODEC)
+#include "utils/AMLUtils.h"
+#endif
+
 #include <new> // for std::bad_alloc
 #include <algorithm>
 
@@ -93,6 +97,10 @@ AEDeviceType CActiveAESink::GetDeviceType(const std::string &device)
 
 bool CActiveAESink::HasPassthroughDevice()
 {
+#if defined(HAS_LIBAMCODEC)
+  if (aml_get_device_type() > -1)
+    return true;
+#endif
   for (AESinkInfoList::iterator itt = m_sinkInfoList.begin(); itt != m_sinkInfoList.end(); ++itt)
   {
     for (AEDeviceInfoList::iterator itt2 = itt->m_deviceInfoList.begin(); itt2 != itt->m_deviceInfoList.end(); ++itt2)
@@ -107,6 +115,10 @@ bool CActiveAESink::HasPassthroughDevice()
 
 bool CActiveAESink::SupportsFormat(const std::string &device, AEDataFormat format, int samplerate)
 {
+#if defined(HAS_LIBAMCODEC)
+  if (aml_get_device_type() > -1)
+    return true;
+#endif
   std::string dev = device;
   std::string dri;
   CAESinkFactory::ParseDevice(dev, dri);
