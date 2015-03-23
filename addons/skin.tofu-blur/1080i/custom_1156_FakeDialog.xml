@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="utf-8"?>
+<window type="dialog" id="1156">
+	<defaultcontrol always="true">1000</defaultcontrol>
+	<onunload condition="Window.IsActive(1124) + [Skin.HasSetting(mainmenuicons) | !IsEmpty(Window(1124).Property(ResetItem))]">Control.Move(9000,5)</onunload>
+	<onunload condition="Window.IsActive(1124) + [Skin.HasSetting(mainmenuicons) | !IsEmpty(Window(1124).Property(ResetItem))] + Library.HasContent(Movies)">Control.Move(9000,1)</onunload>
+	<onunload condition="Window.IsActive(1124) + [Skin.HasSetting(mainmenuicons) | !IsEmpty(Window(1124).Property(ResetItem))] + Library.HasContent(TVShows)">Control.Move(9000,1)</onunload>
+	<onunload condition="Window.IsActive(1124) + [Skin.HasSetting(mainmenuicons) | !IsEmpty(Window(1124).Property(ResetItem))] + Library.HasContent(MusicVideos)">Control.Move(9000,1)</onunload>
+	<onunload condition="!IsEmpty(Window(1124).Property(ResetItem))">SetFocus(9006)</onunload>
+	<onunload>ClearProperty(ResetItem,1124)</onunload>
+	<zorder>5</zorder>
+	<coordinates>
+		<posx>0</posx>
+		<posy>0</posy>
+		<system>1</system>
+	</coordinates>
+	<controls>
+		<control type="button" id="1000">
+			<include>HiddenObject</include>
+			<onfocus condition="!Window.IsActive(1124)">Dialog.Close(1156)</onfocus>
+		</control>
+		<control type="group">
+			<visible>Window.IsActive(1124)</visible>
+			<animation type="WindowOpen" reversible="false">
+				<effect type="zoom" start="80" end="100" center="960,540" tween="back" time="240" />
+				<effect type="fade" end="100" time="240" />
+			</animation>
+			<animation type="WindowClose" reversible="false">
+				<effect type="zoom" start="100" end="80" center="960,540" easing="in" tween="back" time="240" />
+				<effect type="fade" start="100" end="0" time="240" />
+			</animation>
+			<animation type="Visible" reversible="false">
+				<effect type="zoom" start="80" end="100" center="960,540" delay="160" tween="back" time="240" />
+				<effect type="fade" delay="160" end="100" time="240" />
+			</animation>
+			<animation type="Hidden" reversible="false">
+				<effect type="zoom" start="100" end="80" center="960,540" easing="in" tween="back" time="240" />
+				<effect type="fade" start="100" end="0" time="240" />
+			</animation>
+			<include>DialogBackFade</include>
+			<control type="group">
+				<posx>879</posx>
+				<posy>525</posy>
+				<animation effect="fade" start="0" end="100" time="500">WindowOpen</animation>
+				<control type="image">
+					<posx>0</posx>
+					<posy>0</posy>
+					<width>30</width>
+					<height>30</height>
+					<texture>busy-nofocus.png</texture>
+				</control>
+				<control type="image">
+					<posx>44</posx>
+					<posy>0</posy>
+					<width>30</width>
+					<height>30</height>
+					<texture>busy-nofocus.png</texture>
+				</control>
+				<control type="image">
+					<posx>88</posx>
+					<posy>0</posy>
+					<width>30</width>
+					<height>30</height>
+					<texture>busy-nofocus.png</texture>
+				</control>
+				<control type="image">
+					<posx>132</posx>
+					<posy>0</posy>
+					<width>30</width>
+					<height>30</height>
+					<texture>busy-nofocus.png</texture>
+				</control>
+				<control type="image">
+					<posx>0</posx>
+					<posy>0</posy>
+					<width>30</width>
+					<height>30</height>
+					<texture>busy-focus.png</texture>
+					<animation type="Conditional" condition="true" pulse="true">
+						<effect type="slide" start="0,0" end="0,0" time="0"/>
+						<effect type="slide" start="0,0" end="44,0" time="0" delay="250"/>
+						<effect type="slide" start="0,0" end="44,0" time="0" delay="750"/>
+						<effect type="slide" start="0,0" end="44,0" time="0" delay="1250"/>
+						<effect type="slide" start="0,0" end="0,0" time="0" delay="1500"/>
+					</animation>
+				</control>
+			</control>
+		</control>
+	</controls>
+</window>

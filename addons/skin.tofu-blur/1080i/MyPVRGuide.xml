@@ -1,0 +1,254 @@
+<?xml version="1.0" encoding="utf-8"?>
+<window>
+	<defaultcontrol>10</defaultcontrol>
+	<views>10,11,12,13</views>
+	<allowoverlay>no</allowoverlay>
+	<include condition="!Skin.HasSetting(setup-0.2.3)">AutoConfig</include>
+	<onload condition="!Skin.HasSetting(ExplainMediaMenu)">ActivateWindow(1123)</onload>
+	<controls>
+		<control type="multiimage">
+			<imagepath background="true">$VAR[LiveTVFanartVar]</imagepath>
+			<animation effect="zoom" start="110" end="130" center="auto" time="12000" pulse="true" condition="Skin.HasSetting(animatedbg)">Conditional</animation>
+			<animation effect="slide" start="-15,-15" end="15,15" time="6000" pulse="true" condition="Skin.HasSetting(animatedbg)">Conditional</animation>
+		</control>
+		<control type="group">
+			<control type="visualisation">
+				<include>FullscreenDimensions</include>
+				<visible>Player.HasAudio + !Skin.HasSetting(ShowBackgroundVis)</visible>
+			</control>
+			<control type="videowindow">
+				<include>FullscreenDimensions</include>
+				<visible>Player.HasVideo + !Skin.HasSetting(ShowBackgroundVideo)</visible>
+			</control>
+		</control>
+		<include>BackgroundDiffuse</include>
+		<control type="group">
+			<posy>30</posy>
+			<include>Animation_OpenCloseZoom_New</include>
+			<control type="group">
+				<include>Animation_VisibleChange200</include>
+				<control type="image">
+					<posx>59</posx>
+					<posy>43</posy>
+					<width>1806</width>
+					<height>938</height>
+					<texture border="5">panel.png</texture>
+					<colordiffuse>$VAR[PanelColorVar]</colordiffuse>
+				</control>
+			</control>
+		</control>
+		<control type="group" id="50">
+			<posy>30</posy>
+			<include>Animation_OpenCloseZoom_New</include>
+			<include>EPGTimelineView</include>
+			<include>LiveTVGuideChannelView</include>
+			<include>LiveTVGuideNowView</include>
+			<include>LiveTVGuideNextView</include>
+		</control>
+		<control type="group">
+			<include>Animation_HideBreadCrumbs</include>
+			<include>Breadcrumbs_BackBar</include>
+			<include>BreadcrumbsContent</include>
+			<include>Breadcrumbs_Furniture</include>
+		</control>
+		<include>Furniture_NowPlayingWidget</include>
+		<include>Media_Menu_Furniture</include>
+		<control type="label" id="29">
+			<font>-</font>
+			<include>HiddenObject</include>
+		</control>
+		<control type="label" id="30">
+			<font>-</font>
+			<include>HiddenObject</include>
+		</control>
+		<control type="group" id="9000">
+			<animation type="Conditional" condition="Window.IsActive(1127)">
+				<effect type="slide" end="-600" time="320" easing="in" tween="cubic" />
+			</animation>
+			<control type="group">
+				<include>Animation_MediaMenuSlide2</include>
+				<control type="grouplist" id="9003">
+					<width>400</width>
+					<height>1080</height>
+					<orientation>vertical</orientation>
+					<onright>50</onright>
+					<onup>9003</onup>
+					<ondown>9003</ondown>
+					<onback>50</onback>
+					<control type="button" id="91">
+						<label>19023</label>
+						<textcolor>$VAR[FontColorVar]</textcolor>
+						<include>Objects_MediaMenuButtonIcons</include>
+						<onclick>ReplaceWindow(TVChannels)</onclick>
+					</control>
+					<control type="button" id="92">
+						<posy>38</posy>
+						<label>19024</label>
+						<textcolor>$VAR[FontColorVar]</textcolor>
+						<visible>!Skin.HasSetting(noradio)</visible>
+						<include>Objects_MediaMenuButtonIcons</include>
+						<onclick>ReplaceWindow(RadioChannels)</onclick>
+					</control>
+					<control type="button" id="93">
+						<posy>112</posy>
+						<label>19163</label>
+						<textcolor>$VAR[FontColorVar]</textcolor>
+						<include>Objects_MediaMenuButtonIcons</include>
+						<onclick condition="IsEmpty(Window.Property(IsRadio))">ReplaceWindow(TVRecordings)</onclick>
+						<onclick condition="!IsEmpty(Window.Property(IsRadio))">ReplaceWindow(RadioRecordings)</onclick>
+					</control>
+					<control type="button" id="94">
+						<posy>38</posy>
+						<label>22020</label>
+						<textcolor>$VAR[FontColorVar]</textcolor>
+						<include>Objects_MediaMenuButtonIcons</include>
+						<onclick condition="IsEmpty(Window.Property(IsRadio))">ReplaceWindow(TVGuide)</onclick>
+						<onclick condition="!IsEmpty(Window.Property(IsRadio))">ReplaceWindow(RadioGuide)</onclick>
+					</control>
+					<control type="button" id="95">
+						<posy>150</posy>
+						<label>19040</label>
+						<textcolor>$VAR[FontColorVar]</textcolor>
+						<include>Objects_MediaMenuButtonIcons</include>
+						<onclick condition="IsEmpty(Window.Property(IsRadio))">ReplaceWindow(TVTimers)</onclick>
+						<onclick condition="!IsEmpty(Window.Property(IsRadio))">ReplaceWindow(RadioTimers)</onclick>
+					</control>
+					<control type="button" id="96">
+						<posy>188</posy>
+						<label>137</label>
+						<textcolor>$VAR[FontColorVar]</textcolor>
+						<include>Objects_MediaMenuButtonIcons</include>
+						<onclick condition="IsEmpty(Window.Property(IsRadio))">ReplaceWindow(TVSearch)</onclick>
+						<onclick condition="!IsEmpty(Window.Property(IsRadio))">ReplaceWindow(RadioSearch)</onclick>
+					</control>
+					<control type="button" id="2">
+						<posy>150</posy>
+						<label>-</label>
+						<textcolor>$VAR[FontColorVar]</textcolor>
+						<include>Objects_MediaMenuButtonIcons</include>
+					</control>
+					<control type="button" id="28">
+						<posy>150</posy>
+						<label>-</label>
+						<textcolor>$VAR[FontColorVar]</textcolor>
+						<include>Objects_MediaMenuButtonIcons</include>
+					</control>
+					<control type="button" id="1664">
+						<label>31708</label>
+						<textcolor>$VAR[FontColorVar]</textcolor>
+						<include>Objects_MediaMenuButtonIcons</include>
+						<onclick>ActivateWindow(1127)</onclick>
+					</control>
+				</control>
+				<control type="grouplist">
+					<posy>15</posy>
+					<orientation>vertical</orientation>
+					<itemgap>20</itemgap>
+					<visible>ControlGroup(9003).HasFocus</visible>
+					<animation effect="fade" time="220">Visible</animation>
+					<animation effect="fade" time="160" delay="1000">Hidden</animation>
+					<control type="image">
+						<texture>BigIcons/Television.png</texture>
+						<include>MediaMenuIcons</include>
+						<visible>Control.HasFocus(91)</visible>
+					</control>
+					<control type="image">
+						<texture>BigIcons/Television.png</texture>
+						<colordiffuse>$VAR[FontColorVar]</colordiffuse>
+						<include>MediaMenuIcons</include>
+						<visible>!Control.HasFocus(91)</visible>
+					</control>
+					<control type="image">
+						<texture>BigIcons/Microphone.png</texture>
+						<include>MediaMenuIcons</include>
+						<visible>Control.HasFocus(92)</visible>
+					</control>
+					<control type="image">
+						<texture>BigIcons/Microphone.png</texture>
+						<colordiffuse>$VAR[FontColorVar]</colordiffuse>
+						<include>MediaMenuIcons</include>
+						<visible>!Control.HasFocus(92)</visible>
+					</control>
+					<control type="image">
+						<texture>BigIcons/ButtonRecord.png</texture>
+						<include>MediaMenuIcons</include>
+						<visible>Control.HasFocus(93)</visible>
+					</control>
+					<control type="image">
+						<texture>BigIcons/ButtonRecord.png</texture>
+						<colordiffuse>$VAR[FontColorVar]</colordiffuse>
+						<include>MediaMenuIcons</include>
+						<visible>!Control.HasFocus(93)</visible>
+					</control>
+					<control type="image">
+						<texture>BigIcons/ButtonEPG.png</texture>
+						<include>MediaMenuIcons</include>
+						<visible>Control.HasFocus(94)</visible>
+					</control>
+					<control type="image">
+						<texture>BigIcons/ButtonEPG.png</texture>
+						<colordiffuse>$VAR[FontColorVar]</colordiffuse>
+						<include>MediaMenuIcons</include>
+						<visible>!Control.HasFocus(94)</visible>
+					</control>
+					<control type="image">
+						<texture>BigIcons/AlarmClock.png</texture>
+						<include>MediaMenuIcons</include>
+						<visible>Control.HasFocus(95)</visible>
+					</control>
+					<control type="image">
+						<texture>BigIcons/AlarmClock.png</texture>
+						<colordiffuse>$VAR[FontColorVar]</colordiffuse>
+						<include>MediaMenuIcons</include>
+						<visible>!Control.HasFocus(95)</visible>
+					</control>
+					<control type="image">
+						<texture>BigIcons/Search.png</texture>
+						<include>MediaMenuIcons</include>
+						<visible>Control.HasFocus(96)</visible>
+					</control>
+					<control type="image">
+						<texture>BigIcons/Search.png</texture>
+						<colordiffuse>$VAR[FontColorVar]</colordiffuse>
+						<include>MediaMenuIcons</include>
+						<visible>!Control.HasFocus(96)</visible>
+					</control>
+					<control type="image">
+						<texture>BigIcons/Presentation.png</texture>
+						<include>MediaMenuIcons</include>
+						<visible>Control.HasFocus(2)</visible>
+					</control>
+					<control type="image">
+						<texture>BigIcons/Presentation.png</texture>
+						<colordiffuse>$VAR[FontColorVar]</colordiffuse>
+						<include>MediaMenuIcons</include>
+						<visible>!Control.HasFocus(2)</visible>
+					</control>
+					<control type="image">
+						<texture>BigIcons/Formatbullets.png</texture>
+						<include>MediaMenuIcons</include>
+						<visible>Control.HasFocus(28)</visible>
+					</control>
+					<control type="image">
+						<texture>BigIcons/Formatbullets.png</texture>
+						<colordiffuse>$VAR[FontColorVar]</colordiffuse>
+						<include>MediaMenuIcons</include>
+						<visible>!Control.HasFocus(28)</visible>
+					</control>
+					<control type="image">
+						<texture>BigIcons/Controlpanel.png</texture>
+						<include>MediaMenuIcons</include>
+						<visible>Control.HasFocus(1664)</visible>
+					</control>
+					<control type="image">
+						<texture>BigIcons/Controlpanel.png</texture>
+						<colordiffuse>$VAR[FontColorVar]</colordiffuse>
+						<include>MediaMenuIcons</include>
+						<visible>!Control.HasFocus(1664)</visible>
+					</control>
+				</control>
+			</control>
+		</control>
+		<include>ContextMenuOverlay</include>
+	</controls>
+</window>

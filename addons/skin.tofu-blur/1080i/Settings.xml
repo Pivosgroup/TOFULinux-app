@@ -1,0 +1,168 @@
+<?xml version="1.0" encoding="utf-8"?>
+<window>
+	<defaultcontrol always="true">9000</defaultcontrol>
+	<allowoverlay>no</allowoverlay>
+	<include condition="!Skin.HasSetting(setup-0.2.3)">AutoConfig</include>
+	<controls>
+		<include>CommonSettingsBackground</include>
+		<include>CommonMediaPlayingBackground</include>
+		<include>BackgroundDiffuse</include>
+		<control type="group">
+			<animation type="WindowOpen" reversible="false" condition="![Window.Previous(SettingsCategory.xml) | Window.Previous(systeminfo) | Window.Previous(skinsettings)]">
+				<effect type="zoom" start="150" end="100" center="960,540" time="240" tween="cubic" />
+				<effect type="fade" end="100" time="240" />
+			</animation>
+			<animation type="WindowClose" reversible="false" condition="![Window.Next(SettingsCategory.xml) | Window.Next(systeminfo) | Window.Next(skinsettings)]">
+				<effect type="fade" start="100" end="0" time="240" />
+				<effect type="zoom" start="100" end="130" center="960,540" time="240" tween="cubic" easing="in" />
+			</animation>
+			<control type="label">
+				<posx>215</posx>
+				<posy>200</posy>
+				<width>1200</width>
+				<height>57</height>
+				<label>[B]$LOCALIZE[5][/B]</label>
+				<font>Font_Reg57_Caps</font>
+				<textcolor>$VAR[FontColorVar]</textcolor>
+			</control>
+			<control type="panel" id="9000">
+				<posx>215</posx>
+				<posy>310</posy>
+				<width>1600</width>
+				<height>548</height>
+				<onleft>ActivateWindow(1121)</onleft>
+				<onright>9001</onright>
+				<onup>9000</onup>
+				<ondown>9000</ondown>
+				<itemlayout height="274" width="320">
+					<control type="image">
+						<posx>31</posx>
+						<posy>0</posy>
+						<width>144</width>
+						<height>144</height>
+						<texture>$INFO[ListItem.Icon]</texture>
+						<colordiffuse>$VAR[FontColorVar]</colordiffuse>
+						<animation effect="fade" end="40" condition="true">Conditional</animation>
+					</control>
+					<control type="label">
+						<posx>0</posx>
+						<posy>150</posy>
+						<width>206</width>
+						<height>30</height>
+						<label>$INFO[ListItem.Label]</label>
+						<font>Font_Bold26_Caps</font>
+						<textcolor>$VAR[FontColorVar]</textcolor>
+						<align>center</align>
+					</control>
+				</itemlayout>
+				<focusedlayout height="274" width="320">
+					<control type="image">
+						<posx>0</posx>
+						<posy>0</posy>
+						<width>206</width>
+						<height>196</height>
+						<texture>Icon-Selected.png</texture>
+					</control>
+					<control type="label">
+						<posx>0</posx>
+						<posy>150</posy>
+						<width>206</width>
+						<height>30</height>
+						<label>$INFO[ListItem.Label]</label>
+						<font>Font_Bold26_Caps</font>
+						<align>center</align>
+					</control>
+					<control type="image">
+						<posx>31</posx>
+						<posy>0</posy>
+						<width>144</width>
+						<height>144</height>
+						<texture>$INFO[ListItem.Icon]</texture>
+					</control>
+				</focusedlayout>
+				<content>
+					<item id="1">
+						<label>480</label>
+						<property name="description">$LOCALIZE[31400]</property>
+						<onclick>ActivateWindow(AppearanceSettings)</onclick>
+						<icon>Icon-Appearance.png</icon>
+					</item>
+					<item id="2">
+						<label>157</label>
+						<property name="description">$LOCALIZE[31401]</property>
+						<onclick>ActivateWindow(VideosSettings)</onclick>
+						<icon>Icon-Videos.png</icon>
+					</item>
+					<item id="3">
+						<label>2</label>
+						<property name="description">$LOCALIZE[31402]</property>
+						<onclick>ActivateWindow(MusicSettings)</onclick>
+						<icon>Icon-Music.png</icon>
+					</item>
+					<item id="4">
+						<label>1</label>
+						<property name="description">$LOCALIZE[31403]</property>
+						<onclick>ActivateWindow(PicturesSettings)</onclick>
+						<icon>Icon-Pictures.png</icon>
+					</item>
+					<item id="5">
+						<label>8</label>
+						<property name="description">$LOCALIZE[31404]</property>
+						<onclick>ActivateWindow(WeatherSettings)</onclick>
+						<icon>Icon-Weather.png</icon>
+					</item>
+					<item id="6">
+						<label>24001</label>
+						<label2>31411</label2>
+						<property name="description">$LOCALIZE[31408]</property>
+						<onclick>ActivateWindow(AddonBrowser)</onclick>
+						<icon>Icon-Addons.png</icon>
+					</item>
+					<item id="7">
+						<label>14036</label>
+						<property name="description">$LOCALIZE[31405]</property>
+						<onclick>ActivateWindow(ServiceSettings)</onclick>
+						<icon>Icon-Services.png</icon>
+					</item>
+					<item id="8">
+						<label>13000</label>
+						<property name="description">$LOCALIZE[31406]</property>
+						<onclick>ActivateWindow(SystemSettings)</onclick>
+						<icon>Icon-System.png</icon>
+					</item>
+					<item id="21">
+						<label>31017</label>
+						<label2>31478</label2>
+						<property name="description">$LOCALIZE[31016]</property>
+						<onclick>ActivateWindow(PVRSettings)</onclick>
+						<icon>Icon-PVR.png</icon>
+					</item>
+					<item id="10">
+						<label>13281</label>
+						<label2>31413</label2>
+						<property name="description">$LOCALIZE[31409]</property>
+						<onclick>ActivateWindow(SystemInfo)</onclick>
+						<icon>Icon-Info.png</icon>
+					</item>
+				</content>
+			</control>
+			<control type="textbox">
+				<posx>60</posx>
+				<posy>920</posy>
+				<width>1800</width>
+				<height>160</height>
+				<label>$INFO[Container(9000).ListItem.Property(description)]</label>
+				<textcolor>grey</textcolor>
+				<font>Font_Bold30_Caps</font>
+				<align>center</align>
+			</control>
+		</control>
+		<control type="group">
+			<include>Animation_HideBreadCrumbs</include>
+			<include>Breadcrumbs_BackBar</include>
+			<include>BreadcrumbsContent</include>
+			<include>Breadcrumbs_Furniture</include>
+		</control>
+		<include>Furniture_NowPlayingWidget</include>
+	</controls>
+</window>
