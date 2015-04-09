@@ -84,7 +84,7 @@
 						<colordiffuse>$VAR[PanelColorVar]</colordiffuse>
 					</control>
 					<control type="label">
-						<posx>196</posx>
+						<posx>0</posx>
 						<width>392</width>
 						<height>62</height>
 						<align>center</align>
@@ -107,7 +107,7 @@
 						<visible>Control.HasFocus(4)</visible>
 					</control>
 					<control type="label">
-						<posx>196</posx>
+						<posx>0</posx>
 						<width>392</width>
 						<height>62</height>
 						<align>center</align>
