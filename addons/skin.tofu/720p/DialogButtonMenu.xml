@@ -113,7 +113,8 @@
 				<textwidth>290</textwidth>
 				<texturefocus border="25,5,25,5">ShutdownButtonFocus.png</texturefocus>
 				<texturenofocus border="25,5,25,5">ShutdownButtonNoFocus.png</texturenofocus>
-				<onclick>AlarmClock(shutdowntimer,Shutdown())</onclick>
+				<onclick condition="!System.CanSuspend">AlarmClock(shutdowntimer,Shutdown())</onclick>
+				<onclick condition="System.CanSuspend">AlarmClock(shutdowntimer,Suspend())</onclick>
 				<pulseonselect>no</pulseonselect>
 				<font>font13</font>
 				<label>20150</label>

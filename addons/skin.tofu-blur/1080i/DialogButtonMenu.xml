@@ -59,7 +59,8 @@
 					<label>$LOCALIZE[31899]</label>
 					<textcolor>$VAR[FontColorVar]</textcolor>
 					<include>Objects_ShutdownMenuButton</include>
-					<onclick>AlarmClock(shutdowntimer,Shutdown())</onclick>
+					<onclick condition="!System.CanSuspend">AlarmClock(shutdowntimer,Shutdown())</onclick>
+					<onclick condition="System.CanSuspend">AlarmClock(shutdowntimer,Suspend())</onclick>
 					<visible>System.CanPowerDown | System.CanSuspend | System.CanHibernate</visible>
 					<visible>!System.HasAlarm(shutdowntimer)</visible>
 				</control>
