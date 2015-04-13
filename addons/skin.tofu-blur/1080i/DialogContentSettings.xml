@@ -90,6 +90,7 @@
 						<align>center</align>
 						<info>ListItem.Label</info>
 						<font>Font_Reg26</font>
+						<selectedcolor>white</selectedcolor>
 					</control>
 				</itemlayout>
 				<focusedlayout height="62">
@@ -104,7 +105,7 @@
 						<height>62</height>
 						<texture border="3,0,0,20">list-focus.png</texture>
 						<colordiffuse>$VAR[PanelColorVar]</colordiffuse>
-						<visible>Control.HasFocus(4)</visible>
+						<visible>Control.HasFocus(21)</visible>
 					</control>
 					<control type="label">
 						<posx>0</posx>
@@ -113,6 +114,7 @@
 						<align>center</align>
 						<info>ListItem.Label</info>
 						<font>Font_Reg26</font>
+						<selectedcolor>white</selectedcolor>
 					</control>
 				</focusedlayout>
 			</control>
