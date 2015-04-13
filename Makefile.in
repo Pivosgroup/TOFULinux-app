@@ -638,7 +638,7 @@ ifeq ($(findstring Darwin,$(shell uname -s)),Darwin)
 		-exec install -m 0644 "{}" $(DESTDIR)$(datarootdir)/xbmc/"{}" \; \
 		-exec printf " -- %-75.75s\r" "{}" \;
 else
-	@find addons language media sounds userdata system -regextype posix-extended -type f -not -iregex ".*@ARCH@.*|.*\.vis|.*\.xbs|.*\.git.*|.*\.so|.*\.dll|.*\.pvr|$(subst ${space},|,$(INSTALL_FILTER))" -exec install -D -m 0644 "{}" $(DESTDIR)$(datarootdir)/@APP_NAME_LC@/"{}" \; -printf " -- %-75.75f\r"
+	@find addons language media sounds userdata system -regextype posix-extended -type f -not -iregex ".*-@ARCH@.*|.*\.vis|.*\.xbs|.*\.git.*|.*\.so|.*\.dll|.*\.pvr|$(subst ${space},|,$(INSTALL_FILTER))" -exec install -D -m 0644 "{}" $(DESTDIR)$(datarootdir)/@APP_NAME_LC@/"{}" \; -printf " -- %-75.75f\r"
 endif
 endif
 	@# Icons and links
