@@ -90,7 +90,6 @@
 						<align>center</align>
 						<info>ListItem.Label</info>
 						<font>Font_Reg26</font>
-						<selectedcolor>white</selectedcolor>
 					</control>
 				</itemlayout>
 				<focusedlayout height="62">
@@ -114,7 +113,6 @@
 						<align>center</align>
 						<info>ListItem.Label</info>
 						<font>Font_Reg26</font>
-						<selectedcolor>white</selectedcolor>
 					</control>
 				</focusedlayout>
 			</control>
