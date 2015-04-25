@@ -12,7 +12,6 @@
 	<onunload>Skin.SetString($INFO[Window(home).Property(MenuItem)].Widget2Title,$ESCINFO[Skin.String(ItemToEdit.Widget2Title)])</onunload>
 	<onunload>Skin.SetString($INFO[Window(home).Property(MenuItem)].Disable,$INFO[Skin.String(ItemToEdit.Disable)])</onunload>
 	<onunload>Skin.SetString($INFO[Window(home).Property(MenuItem)].Icon,$ESCINFO[Skin.String(ItemToEdit.Icon)])</onunload>
-	<onunload>Skin.SetString($INFO[Window(home).Property(MenuItem)].InfoLine,$INFO[Skin.String(ItemToEdit.InfoLine)])</onunload>
 	<onunload>Skin.SetString($INFO[Window(home).Property(MenuItem)].SubMenu,$INFO[Skin.String(ItemToEdit.SubMenu)])</onunload>
 	<onunload condition="IsEmpty(Window(1124).Property(ResetItem))">ClearProperty(MenuItem,home)</onunload>
 	<onunload condition="Skin.HasSetting(mainmenuicons) | !IsEmpty(Window(1124).Property(ResetItem))">Control.Move(9000,10)</onunload>
@@ -79,11 +78,6 @@
 						<label2>[COLOR grey]$INFO[Skin.String(ItemToEdit.MultiFanart)][/COLOR]</label2>
 						<include>Objects_CustomizerInfoButton</include>
 						<visible>![Substring(Skin.String(ItemToEdit.MultiFanart),recent,left) | Substring(Skin.String(ItemToEdit.MultiFanart),widgetfanart,left) | Substring(Skin.String(ItemToEdit.MultiFanart),random,left) | Substring(Skin.String(ItemToEdit.MultiFanart),dvdcase,left) | Substring(Skin.String(ItemToEdit.MultiFanart),nocase,left) | Substring(Skin.String(ItemToEdit.MultiFanart),case,left) | Substring(Skin.String(ItemToEdit.MultiFanart),watchlist,left) | IsEmpty(Skin.String(ItemToEdit.MultiFanart))]</visible>
-					</control>
-					<control type="button">
-						<label>$LOCALIZE[31683]:</label>
-						<label2>[COLOR grey]$INFO[Skin.String(ItemToEdit.InfoLine)][/COLOR]</label2>
-						<include>Objects_CustomizerInfoButton</include>
 					</control>
 					<control type="button">
 						<label>$LOCALIZE[31695]:</label>
@@ -164,12 +158,6 @@
 						<include>Objects_CustomizerSettingsButton</include>
 						<onclick>ActivateWindow(1134)</onclick>
 					</control>
-					<control type="button" id="27">
-						<label>31703</label>
-						<textcolor>grey</textcolor>
-						<include>Objects_CustomizerSettingsButton</include>
-						<onclick>ActivateWindow(1161)</onclick>
-					</control>
 					<control type="button" id="270">
 						<label>31704</label>
 						<textcolor>grey</textcolor>
@@ -196,7 +184,6 @@
 						<onclick>Skin.Reset(ItemToEdit.Widget2Title)</onclick>
 						<onclick>Skin.Reset(ItemToEdit.Icon)</onclick>
 						<onclick>Skin.Reset(ItemToEdit.Disable)</onclick>
-						<onclick>Skin.Reset(ItemToEdit.InfoLine)</onclick>
 						<onclick>Skin.Reset(ItemToEdit.SubMenu)</onclick>
 						<onclick>SetProperty(ResetItem,true,1124)</onclick>
 						<onclick>Dialog.Close(1122)</onclick>
