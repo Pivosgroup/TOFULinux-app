@@ -4932,7 +4932,7 @@
 					<animation effect="fade" start="100" end="80" time="40" condition="true">Conditional</animation>
 				</control>
 				<control type="label">
-					<posx>272</posx>
+					<posx>8</posx>
 					<posy>268</posy>
 					<width>528</width>
 					<height>105</height>
@@ -4993,7 +4993,7 @@
 					<texture>$INFO[ListItem.Property(Logo)]</texture>
 				</control>
 				<control type="label">
-					<posx>399</posx>
+					<posx>20</posx>
 					<posy>8</posy>
 					<width>758</width>
 					<height>105</height>
@@ -5083,7 +5083,7 @@
 			<visible>IsEmpty(ListItem.Property(Logo))</visible>
 		</control>
 		<control type="label">
-			<posx>266</posx>
+			<posx>0</posx>
 			<posy>313</posy>
 			<width>532</width>
 			<height>30</height>
@@ -5094,7 +5094,7 @@
 			<font>Font_Reg30_2</font>
 		</control>
 		<control type="label">
-			<posx>266</posx>
+			<posx>0</posx>
 			<posy>283</posy>
 			<width>532</width>
 			<height>30</height>
