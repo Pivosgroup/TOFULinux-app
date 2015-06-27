@@ -101,7 +101,6 @@ void CGUIWindowSystemInfo::FrameMove()
 #endif
     SetControlLabel(i++, "%s: %s", 12390, SYSTEM_UPTIME);
     SetControlLabel(i++, "%s: %s", 12394, SYSTEM_TOTALUPTIME);
-    SetControlLabel(i++, "%s: %s", 12395, SYSTEM_BATTERY_LEVEL);
   }
   else if (m_section == CONTROL_BT_STORAGE)
   {
@@ -155,7 +154,6 @@ void CGUIWindowSystemInfo::FrameMove()
     SET_CONTROL_LABEL(i++, g_sysinfo.GetCPUBogoMips());
     SET_CONTROL_LABEL(i++, g_sysinfo.GetCPUHardware());
     SET_CONTROL_LABEL(i++, g_sysinfo.GetCPURevision());
-    SET_CONTROL_LABEL(i++, g_sysinfo.GetCPUSerial());
 #endif
     SetControlLabel(i++, "%s %s", 22011, SYSTEM_CPU_TEMPERATURE);
 #if !defined(__arm__) || defined(TARGET_RASPBERRY_PI)
