@@ -588,12 +588,12 @@ CUPnP::CreateServer(int port /* = 0 */)
                     CSettings::Get().GetInt("services.webserverport"),
                     "/").ToString();
 
-    device->m_ModelName        = "Kodi";
-    device->m_ModelNumber      = g_infoManager.GetVersion().c_str();
-    device->m_ModelDescription = "Kodi - Media Server";
-    device->m_ModelURL         = "http://kodi.tv/";
-    device->m_Manufacturer     = "XBMC Foundation";
-    device->m_ManufacturerURL  = "http://kodi.tv/";
+    device->m_ModelName        = "TOFU";
+    device->m_ModelNumber      = ("Base Kodi " + g_infoManager.GetVersion()).c_str();
+    device->m_ModelDescription = "TOFU - Media Server";
+    device->m_ModelURL         = "http://pivosgroup.com/";
+    device->m_Manufacturer     = "Pivos Technology Group, Inc.";
+    device->m_ManufacturerURL  = "http://pivosgroup.com/";
 
     device->SetDelegate(device);
     return device;
@@ -670,12 +670,12 @@ CUPnP::CreateRenderer(int port /* = 0 */)
         NPT_HttpUrl(m_IP,
                     CSettings::Get().GetInt("services.webserverport"),
                     "/").ToString();
-    device->m_ModelName        = "Kodi";
-    device->m_ModelNumber      = g_infoManager.GetVersion().c_str();
-    device->m_ModelDescription = "Kodi - Media Renderer";
-    device->m_ModelURL         = "http://kodi.tv/";
-    device->m_Manufacturer     = "XBMC Foundation";
-    device->m_ManufacturerURL  = "http://kodi.tv/";
+    device->m_ModelName        = "TOFU";
+    device->m_ModelNumber      = ("Base Kodi " + g_infoManager.GetVersion()).c_str();
+    device->m_ModelDescription = "TOFU - Media Renderer";
+    device->m_ModelURL         = "http://pivosgroup.com/";
+    device->m_Manufacturer     = "Pivos Technology Group, Inc.";
+    device->m_ManufacturerURL  = "http://pivosgroup.com/";
 
     return device;
 }
