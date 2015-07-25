@@ -50,6 +50,7 @@
 #include "linux/ConsoleDeviceKitPowerSyscall.h"
 #include "linux/LogindUPowerSyscall.h"
 #include "linux/UPowerSyscall.h"
+#include "linux/AMLPowerSyscall.h"
 #endif // HAS_DBUS
 #elif defined(TARGET_WINDOWS)
 #include "powermanagement/windows/Win32PowerSyscall.h"
@@ -95,7 +96,9 @@ void CPowerManager::Initialize()
     std::make_pair(CLogindUPowerSyscall::HasLogind,
                    [] { return new CLogindUPowerSyscall(); }),
     std::make_pair(CUPowerSyscall::HasUPower,
-                   [] { return new CUPowerSyscall(); })
+                   [] { return new CUPowerSyscall(); }),
+    std::make_pair(CAMLPowerSyscall::HasAMLPowerSyscall,
+                   [] { return new CAMLPowerSyscall(); })
   };
   for(const auto& powerManager : powerManagers)
   {
