@@ -385,6 +385,7 @@ protected:
 
   void UpdateApplication(double timeout);
   void UpdatePlayState(double timeout);
+  void UpdateReadRate();
   void UpdateClockMaster();
   double m_UpdateApplication;
 
@@ -396,7 +397,7 @@ protected:
   ECacheState  m_caching;
   CFileItem    m_item;
   XbmcThreads::EndTime m_ChannelEntryTimeOut;
-
+  unsigned int m_readrate;
 
   CCurrentStream m_CurrentAudio;
   CCurrentStream m_CurrentVideo;
