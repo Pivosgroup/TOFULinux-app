@@ -18,6 +18,7 @@
  *
  */
 
+#include <limits.h>
 #include "threads/SystemClock.h"
 #include "FileCache.h"
 #include "threads/Thread.h"
@@ -31,6 +32,7 @@
 
 #if !defined(TARGET_WINDOWS)
 #include "linux/ConvUtils.h" //GetLastError()
+#include "linux/XMemUtils.h"
 #endif
 
 #include <cassert>
@@ -185,34 +187,34 @@ bool CFileCache::Open(const CURL& url)
 
   if (!m_pCache)
   {
-    if (g_advancedSettings.m_cacheMemBufferSize == 0)
+    if (g_advancedSettings.m_freeMemCachePercent == 0)
     {
       // Use cache on disk
       m_pCache = new CSimpleFileCache();
     }
     else
     {
-      size_t cacheSize;
-      if (m_fileSize > 0 && m_fileSize < g_advancedSettings.m_cacheMemBufferSize && !(m_flags & READ_AUDIO_VIDEO))
-      {
-        // NOTE: We don't need to take into account READ_MULTI_STREAM here as it's only used for audio/video
-        cacheSize = m_fileSize;
-      }
-      else
-      {
-        cacheSize = g_advancedSettings.m_cacheMemBufferSize;
-      }
+      //set cache size of m_freeMemCachePercent of free ram,  with hardcoded 1 GB upper limit
+      MEMORYSTATUSEX stat;
+      stat.dwLength = sizeof(MEMORYSTATUSEX);
+      GlobalMemoryStatusEx(&stat);
 
-      size_t back = cacheSize / 4;
-      size_t front = cacheSize - back;
+      //limit max cache to 1 GB
+      unsigned int maxcache = (1024 * 1024 * 1000);
+      double ramamount = (stat.ullAvailPhys * (g_advancedSettings.m_freeMemCachePercent / 100.00));
+
+      unsigned int cacheRam = std::min(static_cast<unsigned int>(ramamount), maxcache);
       
+      unsigned int frontCache = static_cast<unsigned int>(cacheRam * 0.75);
+      unsigned int backCache = cacheRam - frontCache;
+
       if (m_flags & READ_MULTI_STREAM)
       {
         // READ_MULTI_STREAM requires double buffering, so use half the amount of memory for each buffer
-        front /= 2;
-        back /= 2;
+        frontCache = frontCache / 2;
+        backCache = backCache / 2;
       }
-      m_pCache = new CCircularCache(front, back);
+      m_pCache = new CCircularCache(frontCache, std::max<unsigned int>(backCache, 1024 * 1024));
     }
 
     if (m_flags & READ_MULTI_STREAM)
