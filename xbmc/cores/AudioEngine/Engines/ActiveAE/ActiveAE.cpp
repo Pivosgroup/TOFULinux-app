@@ -1505,6 +1505,13 @@ void CActiveAE::ApplySettingsToFormat(AEAudioFormat &format, AudioSettings &sett
       format.m_channelLayout = AE_CH_LAYOUT_2_0;
     }
 
+    // OpenELEC workaround to define a minimum sample Rate for broken AVRs
+    if (format.m_sampleRate < 8000)
+    {
+      format.m_sampleRate = 8000;
+      CLog::Log(LOGDEBUG, "CActiveAE::MinimumSampleRate - Forced by use to samplerate %d", format.m_sampleRate);
+    }
+
     if (m_settings.config == AE_CONFIG_FIXED)
     {
       format.m_sampleRate = m_settings.samplerate;
