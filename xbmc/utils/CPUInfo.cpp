@@ -593,6 +593,13 @@ bool CCPUInfo::getTemperature(CTemperature& temperature)
     else
       scale = 'c';
   }
+  else if (aml_get_device_type() == AML_DEVICE_TYPE_M8) // Meson8 only
+  {
+    if (-1 == (value = aml_get_sysfs_int("/sys/class/thermal/thermal_zone1/temp")))
+      value = 0;
+    else
+      scale = 'c';
+  }
 #endif
 #else
   int         ret   = 0;
