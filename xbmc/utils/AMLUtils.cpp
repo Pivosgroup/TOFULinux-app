@@ -193,6 +193,35 @@ bool aml_support_h264_4k2k()
   return (has_h264_4k2k == 1);
 }
 
+enum AML_DEVICE_TYPE aml_get_device_type()
+{
+  static enum AML_DEVICE_TYPE aml_device_type = AML_DEVICE_TYPE_UNINIT;
+  if (aml_device_type == AML_DEVICE_TYPE_UNINIT)
+  {
+    std::string cpu_hardware = g_cpuInfo.getCPUHardware();
+
+    if (cpu_hardware.find("MESON-M1") != std::string::npos)
+      aml_device_type = AML_DEVICE_TYPE_M1;
+    else if (cpu_hardware.find("MESON-M3") != std::string::npos
+          || cpu_hardware.find("MESON3")   != std::string::npos)
+      aml_device_type = AML_DEVICE_TYPE_M3;
+    else if (cpu_hardware.find("Meson6") != std::string::npos)
+      aml_device_type = AML_DEVICE_TYPE_M6;
+    else if ((cpu_hardware.find("Meson8") != std::string::npos) && (cpu_hardware.find("Meson8B") == std::string::npos))
+    {
+      if (aml_support_hevc())
+        aml_device_type = AML_DEVICE_TYPE_M8M2;
+      else
+        aml_device_type = AML_DEVICE_TYPE_M8;
+    } else if (cpu_hardware.find("Meson8B") != std::string::npos)
+      aml_device_type = AML_DEVICE_TYPE_M8B;
+    else
+      aml_device_type = AML_DEVICE_TYPE_UNKNOWN;
+  }
+
+  return aml_device_type;
+}
+
 void aml_set_audio_passthrough(bool passthrough)
 {
   SysfsUtils::SetInt("/sys/class/audiodsp/digital_raw", passthrough ? 2:0);
