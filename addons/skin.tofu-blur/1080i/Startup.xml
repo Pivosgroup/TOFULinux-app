@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="utf-8"?>
+<window>
+	<defaultcontrol>10</defaultcontrol>
+	<include condition="!Skin.HasSetting(setup-0.2.3)">AutoConfig</include>
+	<onload condition="System.HasAddon(script.favourites)">RunScript(script.favourites)</onload>
+	<onunload>Skin.SetString(widgetlist,$INFO[Control.GetLabel(11111)])</onunload>
+	<onunload>Skin.SetString(widget2list,$INFO[Control.GetLabel(11112)])</onunload>
+	<onunload>Skin.SetString(backgroundlist,$INFO[Control.GetLabel(11113)])</onunload>
+	<onunload>Skin.SetString(submenulist,$INFO[Control.GetLabel(11114)])</onunload>
+	<animation type="WindowClose" reversible="false">
+		<effect type="fade" start="100" end="0" time="400" />
+	</animation>
+	<controls>
+		<control type="group">
+			<animation effect="fade" start="100" end="0" time="0" condition="true">conditional</animation>
+			<include>InvisibleIncludeLabels</include>
+			<control type="button" id="10">
+				<onfocus condition="Skin.HasSetting(Use_Startup_Playlist) + !IsEmpty(Skin.String(Startup_Playlist_Path))">PlayMedia($ESCINFO[Skin.String(Startup_Playlist_Path)])</onfocus>
+				<onfocus>SetFocus(11)</onfocus>
+				<onclick>noop</onclick>
+			</control>
+			<control type="button" id="11">
+				<onclick>noop</onclick>
+				<onfocus>ReplaceWindow($INFO[System.StartupWindow])</onfocus>
+				<animation effect="fade" start="100" end="0" time="3000">Focus</animation>
+			</control>
+		</control>
+		<control type="image">
+			<posx>0</posx>
+			<posy>0</posy>
+			<width>1920</width>
+			<height>1080</height>
+			<texture>splash.jpg</texture>
+		</control>
+		<control type="group">
+			<posx>920</posx>
+			<posy>756</posy>
+			<animation effect="fade" start="0" end="100" time="500">WindowOpen</animation>
+			<control type="image">
+				<posx>0</posx>
+				<posy>0</posy>
+				<width>15</width>
+				<height>15</height>
+				<texture>dot-off.png</texture>
+			</control>
+			<control type="image">
+				<posx>22</posx>
+				<posy>0</posy>
+				<width>15</width>
+				<height>15</height>
+				<texture>dot-off.png</texture>
+			</control>
+			<control type="image">
+				<posx>44</posx>
+				<posy>0</posy>
+				<width>15</width>
+				<height>15</height>
+				<texture>dot-off.png</texture>
+			</control>
+			<control type="image">
+				<posx>66</posx>
+				<posy>0</posy>
+				<width>15</width>
+				<height>15</height>
+				<texture>dot-off.png</texture>
+			</control>
+			<control type="image">
+				<posx>0</posx>
+				<posy>0</posy>
+				<width>15</width>
+				<height>15</height>
+				<texture>dot-on.png</texture>
+				<animation type="Conditional" condition="true" pulse="true">
+					<effect type="slide" start="0,0" end="0,0" time="0"/>
+					<effect type="slide" start="0,0" end="22,0" time="0" delay="250"/>
+					<effect type="slide" start="0,0" end="22,0" time="0" delay="750"/>
+					<effect type="slide" start="0,0" end="22,0" time="0" delay="1250"/>
+					<effect type="slide" start="0,0" end="0,0" time="0" delay="1500"/>
+				</animation>
+			</control>
+		</control>
+	</controls>
+</window>

@@ -1,0 +1,152 @@
+<?xml version="1.0" encoding="utf-8"?>
+<window type="dialog" id="134">
+	<defaultcontrol always="true">450</defaultcontrol>
+	<coordinates>
+		<posx>0</posx>
+		<posy>0</posy>
+		<system>1</system>
+	</coordinates>
+	<onunload condition="System.HasAddon(script.favourites) + [Substring(Skin.String(widgetlist),favourite) | Substring(Skin.String(widget2list),favourite)]">AlarmClock(FavouriteUpdate,RunScript(script.favourites),00:01,silent)</onunload>
+	<include>Animation_DialogPopup2</include>
+	<controls>
+		<include>DialogBackFade</include>
+		<control type="image">
+			<posx>179</posx>
+			<posy>100</posy>
+			<width>1564</width>
+			<height>882</height>
+			<texture border="5">panel.png</texture>
+			<colordiffuse>$VAR[PanelColorVar]</colordiffuse>
+		</control>
+		<control type="label">
+			<posx>189</posx>
+			<posy>120</posy>
+			<width>1544</width>
+			<height>60</height>
+			<label>$LOCALIZE[1036]</label>
+			<textcolor>$VAR[FontColorVar]</textcolor>
+			<font>Font_ShowcaseMainLabel2</font>
+			<align>center</align>
+		</control>
+		<control type="image">
+			<posx>183</posx>
+			<posy>180</posy>
+			<width>1555</width>
+			<height>2</height>
+			<texture>line.png</texture>
+			<colordiffuse>$VAR[PanelColorVar]</colordiffuse>
+		</control>
+		<control type="image">
+			<posx>183</posx>
+			<posy>180</posy>
+			<width>1555</width>
+			<height>2</height>
+			<texture>line.png</texture>
+			<colordiffuse>$VAR[PanelColorVar]</colordiffuse>
+			<visible>!Skin.HasSetting(ThumbsFavorites)</visible>
+		</control>
+		<control type="list" id="450">
+			<posx>185</posx>
+			<posy>210</posy>
+			<width>1556</width>
+			<height>725</height>
+			<onleft>61</onleft>
+			<onright>61</onright>
+			<onup>450</onup>
+			<ondown>450</ondown>
+			<pagecontrol>61</pagecontrol>
+			<scrolltime>300</scrolltime>
+			<itemlayout height="90" width="1000">
+				<control type="image">
+					<posx>0</posx>
+					<posy>0</posy>
+					<width>1000</width>
+					<height>90</height>
+					<texture border="3">list-nofocus.png</texture>
+					<colordiffuse>$VAR[PanelColorVar]</colordiffuse>
+				</control>
+				<control type="label">
+					<posx>150</posx>
+					<width>800</width>
+					<height>90</height>
+					<font>Font_Reg38</font>
+					<info>ListItem.Label</info>
+					<textcolor>grey</textcolor>
+				</control>
+				<control type="image">
+					<posx>52</posx>
+					<posy>8</posy>
+					<width>75</width>
+					<height>75</height>
+					<aspectratio>keep</aspectratio>
+					<texture>$INFO[Listitem.Icon]</texture>
+				</control>
+			</itemlayout>
+			<focusedlayout height="90" width="1000">
+				<control type="image">
+					<posx>0</posx>
+					<posy>0</posy>
+					<width>1000</width>
+					<height>90</height>
+					<texture border="3">list-nofocus.png</texture>
+					<colordiffuse>$VAR[PanelColorVar]</colordiffuse>
+				</control>
+				<control type="image">
+					<posx>0</posx>
+					<posy>0</posy>
+					<width>1000</width>
+					<height>90</height>
+					<texture border="3,0,0,20">list-focus.png</texture>
+					<visible>Control.HasFocus(450)</visible>
+					<colordiffuse>$VAR[PanelColorVar]</colordiffuse>
+				</control>
+				<control type="label">
+					<posx>150</posx>
+					<width>800</width>
+					<height>90</height>
+					<font>Font_Reg38</font>
+					<info>ListItem.Label</info>
+				</control>
+				<control type="image">
+					<posx>52</posx>
+					<posy>8</posy>
+					<width>75</width>
+					<height>75</height>
+					<aspectratio>keep</aspectratio>
+					<texture>$INFO[Listitem.Icon]</texture>
+				</control>
+			</focusedlayout>
+		</control>
+		<control type="image">
+			<posx>1250</posx>
+			<posy>275</posy>
+			<width>445</width>
+			<height>445</height>
+			<aspectratio>keep</aspectratio>
+			<texture background="true">$INFO[Container(450).Listitem.Icon]</texture>
+			<bordertexture border="7">thumbs/thumbshadow.png</bordertexture>
+			<bordersize>7</bordersize>
+		</control>
+		<control type="label">
+			<posx>1634</posx>
+			<posy>935</posy>
+			<width>315</width>
+			<height>60</height>
+			<align>right</align>
+			<aligny>bottom</aligny>
+			<label>$INFO[Container(450).NumItems,, $LOCALIZE[31025]]$INFO[Container(450).CurrentPage, - $LOCALIZE[31024] (]$INFO[Container(450).NumPages,/,)]</label>
+			<textcolor>$VAR[FontColorVar]</textcolor>
+			<font>Font_Reg25</font>
+		</control>
+		<control type="group">
+			<posx>194</posx>
+			<control type="scrollbar" id="61">
+				<include>Objects_CommonSettingsScrollbar</include>
+				<onleft>450</onleft>
+				<onright>450</onright>
+				<ondown>61</ondown>
+				<onup>61</onup>
+			</control>
+		</control>
+	</controls>
+</window>

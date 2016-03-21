@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<addon id="skin.tofu-blur" version="2.0.1" name="TOFU Blur" provider-name="Pivos Technology Group, Inc.">
+	<requires>
+		<import addon="xbmc.gui" version="5.10.0"/>
+		<import addon="script.globalsearch" version="3.0.4"/>
+		<import addon="service.skin.widgets" version="0.0.13"/>
+	</requires>
+	<extension point="xbmc.gui.skin" debugging="true" effectslowdown="1.0">
+		<res width="1920" height="1080" aspect="16:9" default="true" folder="1080i" />
+	</extension>
+	<extension point="xbmc.addon.metadata">
+		<summary lang="en">TOFU Blur Skin</summary>
+		<description lang="en">TOFU Blur Skin by Pivos Technology Group, Inc.</description>
+		<platform>all</platform>
+	</extension>
+</addon>

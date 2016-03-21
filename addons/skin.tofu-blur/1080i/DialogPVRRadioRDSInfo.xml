@@ -1,0 +1,238 @@
+<?xml version="1.0" encoding="utf-8"?>
+<window type="dialog" id="134">
+	<defaultcontrol always="true">450</defaultcontrol>
+	<coordinates>
+		<posx>0</posx>
+		<posy>0</posy>
+		<system>1</system>
+	</coordinates>
+	<include>Animation_DialogPopup2</include>
+	<controls>
+		<include>DialogBackFade</include>
+		<control type="image">
+			<posx>179</posx>
+			<posy>100</posy>
+			<width>1564</width>
+			<height>882</height>
+			<texture border="5">panel.png</texture>
+			<colordiffuse>$VAR[PanelColorVar]</colordiffuse>
+		</control>
+		<control type="label">
+			<posx>189</posx>
+			<posy>120</posy>
+			<width>1544</width>
+			<height>60</height>
+			<label>$LOCALIZE[29900]</label>
+			<textcolor>$VAR[FontColorVar]</textcolor>
+			<font>Font_ShowcaseMainLabel2</font>
+			<align>center</align>
+		</control>
+		<control type="image">
+			<posx>183</posx>
+			<posy>180</posy>
+			<width>1555</width>
+			<height>2</height>
+			<texture>line.png</texture>
+			<colordiffuse>$VAR[PanelColorVar]</colordiffuse>
+		</control>
+		<control type="list" id="450">
+			<posx>185</posx>
+			<posy>210</posy>
+			<width>1556</width>
+			<height>725</height>
+			<onleft>61</onleft>
+			<onright>61</onright>
+			<onup>450</onup>
+			<ondown>450</ondown>
+			<pagecontrol>61</pagecontrol>
+			<scrolltime>300</scrolltime>
+			<itemlayout height="90" width="1556">
+				<control type="image">
+					<posx>0</posx>
+					<posy>0</posy>
+					<width>1550</width>
+					<height>90</height>
+					<texture border="3">list-nofocus.png</texture>
+					<colordiffuse>$VAR[PanelColorVar]</colordiffuse>
+				</control>
+				<control type="label">
+					<posx>150</posx>
+					<width>1350</width>
+					<height>90</height>
+					<font>Font_Reg38</font>
+					<info>ListItem.Label</info>
+					<textcolor>grey</textcolor>
+				</control>
+				<control type="label">
+					<posx>150</posx>
+					<width>1350</width>
+					<height>90</height>
+					<font>Font_Reg38</font>
+					<info>ListItem.Label2</info>
+					<align>right</align>
+					<textcolor>grey</textcolor>
+				</control>
+			</itemlayout>
+			<focusedlayout height="90" width="1556">
+				<control type="image">
+					<posx>0</posx>
+					<posy>0</posy>
+					<width>1550</width>
+					<height>90</height>
+					<texture border="3">list-nofocus.png</texture>
+					<colordiffuse>$VAR[PanelColorVar]</colordiffuse>
+				</control>
+				<control type="image">
+					<posx>0</posx>
+					<posy>0</posy>
+					<width>1550</width>
+					<height>90</height>
+					<texture border="3,0,0,20">list-focus.png</texture>
+					<visible>Control.HasFocus(450)</visible>
+					<colordiffuse>$VAR[PanelColorVar]</colordiffuse>
+				</control>
+				<control type="label">
+					<posx>150</posx>
+					<width>1350</width>
+					<height>90</height>
+					<font>Font_Reg38</font>
+					<info>ListItem.Label</info>
+				</control>
+				<control type="label">
+					<posx>150</posx>
+					<width>1350</width>
+					<height>90</height>
+					<font>Font_Reg38</font>
+					<align>right</align>
+					<info>ListItem.Label2</info>
+				</control>
+			</focusedlayout>
+			<content>
+				<item>
+					<label>$LOCALIZE[557]:</label>
+					<label2>$INFO[RDS.Artist]</label2>
+					<onclick>noop</onclick>
+					<visible>IsEmpty(RDS.Band)</visible>
+				</item>
+				<item>
+					<label>$LOCALIZE[29901]:</label>
+					<label2>$INFO[RDS.Band]</label2>
+					<onclick>noop</onclick>
+					<visible>!IsEmpty(RDS.Band)</visible>
+				</item>
+				<item>
+					<label>$LOCALIZE[556]:</label>
+					<label2>$INFO[RDS.Title]</label2>
+					<onclick>noop</onclick>
+					<visible>!IsEmpty(RDS.Title)</visible>
+				</item>
+				<item>
+					<label>$LOCALIZE[558]:</label>
+					<label2>$INFO[RDS.Album]</label2>
+					<onclick>noop</onclick>
+					<visible>!IsEmpty(RDS.Album)</visible>
+				</item>
+				<item>
+					<label>$LOCALIZE[569]:</label>
+					<label2>$INFO[RDS.Comment]</label2>
+					<onclick>noop</onclick>
+					<visible>!IsEmpty(RDS.Comment)</visible>
+				</item>
+				<item>
+					<label>$LOCALIZE[29903]:</label>
+					<label2>$INFO[RDS.Composer]</label2>
+					<onclick>noop</onclick>
+					<visible>!IsEmpty(RDS.Composer)</visible>
+				</item>
+				<item>
+					<label>$LOCALIZE[29905]:</label>
+					<label2>$INFO[RDS.Conductor]</label2>
+					<onclick>noop</onclick>
+					<visible>!IsEmpty(RDS.Conductor)</visible>
+				</item>
+				<item>
+					<label>$LOCALIZE[29902]:</label>
+					<label2>$INFO[RDS.ProgStyle]</label2>
+					<onclick>noop</onclick>
+					<visible>!IsEmpty(RDS.ProgStyle)</visible>
+				</item>
+				<item>
+					<label>$LOCALIZE[29906]:</label>
+					<label2>$INFO[RDS.ProgHost]</label2>
+					<onclick>noop</onclick>
+					<visible>!IsEmpty(RDS.ProgHost)</visible>
+				</item>
+				<item>
+					<label>$LOCALIZE[19148]:</label>
+					<label2>$INFO[RDS.ProgStation]</label2>
+					<onclick>noop</onclick>
+					<visible>!IsEmpty(RDS.ProgStation)</visible>
+				</item>
+				<item>
+					<label>$LOCALIZE[29907]:</label>
+					<label2>$INFO[RDS.ProgEditStaff]</label2>
+					<onclick>noop</onclick>
+					<visible>!IsEmpty(RDS.ProgEditStaff)</visible>
+				</item>
+				<item>
+					<label>$LOCALIZE[19030]:</label>
+					<label2>$INFO[RDS.ProgNow]</label2>
+					<onclick>noop</onclick>
+					<visible>!IsEmpty(RDS.ProgNow)</visible>
+				</item>
+				<item>
+					<label>$LOCALIZE[19031]:</label>
+					<label2>$INFO[RDS.ProgNext]</label2>
+					<onclick>noop</onclick>
+					<visible>!IsEmpty(RDS.ProgNext)</visible>
+				</item>
+				<item>
+					<label>$LOCALIZE[29910]:</label>
+					<label2>$INFO[RDS.PhoneStudio]</label2>
+					<onclick>noop</onclick>
+					<visible>!IsEmpty(RDS.PhoneStudio)</visible>
+				</item>
+				<item>
+					<label>$LOCALIZE[29911]:</label>
+					<label2>$INFO[RDS.EmailStudio]</label2>
+					<onclick>noop</onclick>
+					<visible>!IsEmpty(RDS.EmailStudio)</visible>
+				</item>
+				<item>
+					<label>$LOCALIZE[29912]:</label>
+					<label2>$INFO[RDS.SMSStudio]</label2>
+					<onclick>noop</onclick>
+					<visible>!IsEmpty(RDS.SMSStudio)</visible>
+				</item>
+				<item>
+					<label>$LOCALIZE[29914]:</label>
+					<label2>$INFO[RDS.ProgHomepage]</label2>
+					<onclick>noop</onclick>
+					<visible>!IsEmpty(RDS.ProgHomepage)</visible>
+				</item>
+				<item>
+					<label>$LOCALIZE[29910]:</label>
+					<label2>$INFO[RDS.PhoneHotline]</label2>
+					<onclick>noop</onclick>
+					<visible>!IsEmpty(RDS.PhoneHotline)</visible>
+				</item>
+				<item>
+					<label>$LOCALIZE[29911]:</label>
+					<label2>$INFO[RDS.EmailHotline]</label2>
+					<onclick>noop</onclick>
+					<visible>!IsEmpty(RDS.EmailHotline)</visible>
+				</item>
+			</content>
+		</control>
+		<control type="group">
+			<posx>194</posx>
+			<control type="scrollbar" id="61">
+				<include>Objects_CommonSettingsScrollbar</include>
+				<onleft>450</onleft>
+				<onright>450</onright>
+				<ondown>61</ondown>
+				<onup>61</onup>
+			</control>
+		</control>
+	</controls>
+</window>
